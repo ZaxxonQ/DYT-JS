@@ -6,7 +6,6 @@ setDiv = function(videos){
 		title = titleH1.children[0].innerText;
 	}
 	var html = '<div id="download-youtube-chrome-extension" class="watch-sidebar-gutter   yt-card yt-card-has-padding    yt-uix-expander yt-uix-expander-collapsed">';
-	html = html + '<div style="font-weight: bold; padding: 0px; border-bottom: 0px solid #CCC;"></div>';
 	html = html + '<div style="padding: 0px; font-weight: bold;">';
 	var counter = 0;
 	for(i in videos){
