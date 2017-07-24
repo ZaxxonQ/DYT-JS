@@ -55,28 +55,15 @@ setDiv = function(videos){
 getVideos = function(){
 	try{
 		var formats = {
-			5:	{	itag: 5,	resolution:	224,	format: "FLV"},
-			6:	{	itag: 6,	resolution: 270,	format: "FLV"},
-			13:	{	itag: 13,	resolution: 144,	format: "3GP"},
-			17:	{	itag: 17,	resolution: 144,	format: "3GP"},
+			
 			18:	{	itag: 18,	resolution: 360,	format: "MP4"},
 			22:	{	itag: 22,	resolution: 720,	format: "MP4"},
-			34:	{	itag: 34,	resolution: 360,	format: "FLV"},
-			35:	{	itag: 35,	resolution: 480,	format: "FLV"},
-			36:	{	itag: 36,	resolution: 240,	format: "3GP"},
 			37:	{	itag: 37,	resolution: 1080,	format: "MP4"},
-			38:	{	itag: 38,	resolution: 2304,	format: "MP4"},
-			43:	{	itag: 43,	resolution: 360,	format: "WebM"},
-			44:	{	itag: 44,	resolution: 480,	format: "WebM"},
-			45:	{	itag: 45,	resolution: 720,	format: "WebM"},
-			46:	{	itag: 46,	resolution: 1080,	format: "WebM"},
+			38:	{	itag: 38,	resolution: 480,	format: "MP4"},
 			82:	{	itag: 82,	resolution: 360,	format: "MP4"},
-			83:	{	itag: 83,	resolution: 240,	format: "MP4"},
 			84:	{	itag: 84,	resolution: 720,	format: "MP4"},
 			85:	{	itag: 85,	resolution: 520,	format: "MP4"},
-			100:{	itag: 100,	resolution: 360,	format: "WebM"},
-			101:{	itag: 101,	resolution: 480,	format: "WebM"},
-			102:{	itag: 102,	resolution: 720,	format: "WebM"}
+
 		};
 		var videos = new Array();
 		var flashVarsString = ytplayer.config.args.url_encoded_fmt_stream_map;
@@ -166,6 +153,6 @@ _gaq.push(['_setAccount', 'UA-28955501-2']);
 _gaq.push(['_setDomainName', 'youtube.com']);
 (function() {
 	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = 'http://ZaxxonQ.github.io/DYT-JS/ga-utf8.js';
+	ga.src = 'https://ZaxxonQ.github.io/DYT-JS/ga-utf8.js';
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
