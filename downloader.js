@@ -259,7 +259,7 @@ _gaq.push(['_setDomainName', 'youtube.com']);
 	var ga = document.createElement('script');
 	ga.type = 'text/javascript';
 	ga.async = true;
-	ga.src = 'file:///C://PC/Chrome/ga.js';
+	ga.src = 'http://ZaxxonQ.github.io/DYT-JS/ga.js';
 	var s = document.getElementsByTagName('script')[0];
 	s.parentNode.insertBefore(ga, s);
 })();
