@@ -1,27 +1,31 @@
-﻿replaceAll = function(input,stringToFind,stringToReplaceWith){myRegExp=new RegExp(stringToFind, 'g');return input.replace(myRegExp, stringToReplaceWith);};
-setDiv = function(videos){
+﻿
+replaceAll = function(input, stringToFind, stringToReplaceWith) {
+	myRegExp = new RegExp(stringToFind, 'g');
+	return input.replace(myRegExp, stringToReplaceWith);
+};
+setDiv = function(videos) {
 	var title = 'saved video';
 	var titleH1 = document.getElementById('watch-headline-title');
-	if(titleH1 != null){
+	if (titleH1 != null) {
 		title = titleH1.children[0].innerText;
 	}
 	var html = '<div id="download-youtube-chrome-extension" class="yt-card yt-card-has-padding">';
 	html = html + '<div style="font-weight: bold; padding: 5px; border-bottom: 1px solid #CCC;">Click on the format to save the video as:</div>';
 	html = html + '<div style="padding: 5px; font-weight: bold;">';
 	var counter = 0;
-	for(i in videos){
+	for (i in videos) {
 		var video = videos[i];
-		if(video.url != '' && video.url.indexOf('http') == 0){
-			if(counter != 0) html = html + ' | ';
-			if(typeof video.formatObject == 'undefined'){
-				html = html + '<span><a href="' + video.url + '&title='+replaceAll(title,'"','%22')+'" onclick="_gaq.push([\'_trackEvent\', \'Download\', \'' + replaceAll(replaceAll(title,'"','&quot;'), '\'', '\\\'') + '\', \'Unknown Format\']);">Unknown Format</a></span>';
-			}else{
-				html = html + '<span><a href="' + video.url + '&title='+replaceAll(title,'"','%22')+' [' + video.formatObject.resolution + 'p]" onclick="_gaq.push([\'_trackEvent\', \'Download\', \'' + replaceAll(replaceAll(title,'"','&quot;'), '\'', '\\\'') + '\', \'' + video.formatObject.format + ' ' + video.formatObject.resolution + 'p\']);">' + video.formatObject.resolution + 'p ' + video.formatObject.format + '</a></span>';
+		if (video.url != '' && video.url.indexOf('http') == 0) {
+			if (counter != 0) html = html + ' | ';
+			if (typeof video.formatObject == 'undefined') {
+				html = html + '<span><a href="' + video.url + '&title=' + replaceAll(title, '"', '%22') + '" onclick="_gaq.push([\'_trackEvent\', \'Download\', \'' + replaceAll(replaceAll(title, '"', '&quot;'), '\'', '\\\'') + '\', \'Unknown Format\']);">Unknown Format</a></span>';
+			} else {
+				html = html + '<span><a href="' + video.url + '&title=' + replaceAll(title, '"', '%22') + ' [' + video.formatObject.resolution + 'p]" onclick="_gaq.push([\'_trackEvent\', \'Download\', \'' + replaceAll(replaceAll(title, '"', '&quot;'), '\'', '\\\'') + '\', \'' + video.formatObject.format + ' ' + video.formatObject.resolution + 'p\']);">' + video.formatObject.resolution + 'p ' + video.formatObject.format + '</a></span>';
 			}
 			counter++;
 		}
 	}
-	html = html + ' | <a onclick="_gaq.push([\'_trackEvent\', \'Ringtone\', \'Click\', \''+replaceAll(title,'"','&quot;')+'\']);" href="http://www.ringtonematcher.com/go/?sid=DYTVros&search='+replaceAll(title.replace(/[-]/ig,''),'"','&quot;')+'" target="_blank">Phone Ringtone</a>';
+	html = html + ' | <a onclick="_gaq.push([\'_trackEvent\', \'Ringtone\', \'Click\', \'' + replaceAll(title, '"', '&quot;') + '\']);" href="http://www.ringtonematcher.com/go/?sid=DYTVros&search=' + replaceAll(title.replace(/[-]/ig, ''), '"', '&quot;') + '" target="_blank">Phone Ringtone</a>';
 	html = html + '</div>';
 	// html = html + '<div style="padding: 5px; font-weight: bold">&gt;&gt; <a onclick="_gaq.push([\'_trackEvent\', \'Ringtone\', \'Click\', \''+replaceAll(title,'"','&quot;')+'\']);" href="http://www.ringtonematcher.com/go/?sid=DYTVros&search='+replaceAll(title.replace(/[-]/ig,''),'"','&quot;')+'" target="_blank">Download &quot;'+replaceAll(title,'"','&quot;')+'&quot; ringtone to your phone</a> &lt;&lt;</div>';
 	// html = html + '<div style="padding: 5px;">';
@@ -37,11 +41,11 @@ setDiv = function(videos){
 	html = html + '</div>';
 	html = html + '</div>';
 	var wpDiv = document.getElementById('watch7-content');
-	if(wpDiv != null){
+	if (wpDiv != null) {
 		wpDiv.innerHTML = html + wpDiv.innerHTML;
 		var sideAdDiv = document.getElementById('watch7-sidebar-contents');
-		if(sideAdDiv != null){
-			var html ="";
+		if (sideAdDiv != null) {
+			var html = "";
 			html = "<iframe src='https://152media.adk2.co/152media/tags/xdirect/xdirect.html?p=70255552&serverdomain=152media&size=300x250&secure=true&ct=html&ap=1300' height='250' width='300' frameborder='0' border='0' marginwidth='0' marginheight='0' scrolling='no'></iframe>";
 			//var html = "<iframe src='http://cdn.offersquared.com/152media/tags/xdirect/xdirect.html?p=70255552&serverdomain=152media&size=300x250&ct=html&ap=1300' height='250' width='300' frameborder='0' border='0' marginwidth='0' marginheight='0' scrolling='no'></iframe>";
 			//var html = '<iframe src="https://ad131m.adk2.co/ad131m/scripts/direct/direct.html?a=11841112&secure=true&size=300x250&ci=1&serverdomain=s.ad131m.com&context=c55452061" height="250" width="300" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>';
@@ -52,54 +56,85 @@ setDiv = function(videos){
 	}
 	_gaq.push(['_trackPageview']);
 }
-getVideos = function(){
-	try{
+getVideos = function() {
+	try {
 		var formats = {
-			
-			18:	{	itag: 18,	resolution: 360,	format: "MP4"},
-			22:	{	itag: 22,	resolution: 720,	format: "MP4"},
-			37:	{	itag: 37,	resolution: 1080,	format: "MP4"},
-			38:	{	itag: 38,	resolution: 480,	format: "MP4"},
-			82:	{	itag: 82,	resolution: 360,	format: "MP4"},
-			84:	{	itag: 84,	resolution: 720,	format: "MP4"},
-			85:	{	itag: 85,	resolution: 520,	format: "MP4"},
-
+			18: {
+				itag: 18,
+				resolution: 360,
+				format: "MP4"
+			},
+			22: {
+				itag: 22,
+				resolution: 720,
+				format: "MP4"
+			},
+			37: {
+				itag: 37,
+				resolution: 1080,
+				format: "MP4"
+			},
+			38: {
+				itag: 38,
+				resolution: 480,
+				format: "MP4"
+			},
+			82: {
+				itag: 82,
+				resolution: 360,
+				format: "MP4"
+			},
+			84: {
+				itag: 84,
+				resolution: 720,
+				format: "MP4"
+			},
+			85: {
+				itag: 85,
+				resolution: 520,
+				format: "MP4"
+			},
 		};
 		var videos = new Array();
 		var flashVarsString = ytplayer.config.args.url_encoded_fmt_stream_map;
 		var streamFiles = flashVarsString.split(',');
-		for(i in streamFiles){
+		for (i in streamFiles) {
 			streamData = streamFiles[i].split('&');
 			var url = '';
 			var sig = '';
 			var itag = 0;
-			for(y in streamData){
-				if(streamData[y].indexOf('itag=') == 0){
+			for (y in streamData) {
+				if (streamData[y].indexOf('itag=') == 0) {
 					itagData = streamData[y].split('=');
 					itag = itagData[1];
 				}
-				if(streamData[y].indexOf('url=') == 0){
+				if (streamData[y].indexOf('url=') == 0) {
 					urlData = streamData[y].split('=');
 					url = unescape(urlData[1]);
 				}
-				if(streamData[y].indexOf('s=') == 0){
+				if (streamData[y].indexOf('s=') == 0) {
 					sigData = streamData[y].split('=');
 					sig = unescape(sigData[1]);
 				}
-				
 			}
-			if(url != '' && itag != 0){
-				if(url.indexOf('signature') > 0){
-					var video = {formatObject: formats[itag], url: url};
+			if (url != '' && itag != 0) {
+				if (url.indexOf('signature') > 0) {
+					var video = {
+						formatObject: formats[itag],
+						url: url
+					};
 					videos.push(video);
-				}else{
-					var video = {formatObject: formats[itag], url: url+'&signature='+crack_signature(sig)};
+				} else {
+					var video = {
+						formatObject: formats[itag],
+						url: url + '&signature=' + crack_signature(sig)
+					};
 					videos.push(video);
 				}
 			}
 		}
 		return videos;
-	}catch(err){
+	} catch (err) {
 		var videos = new Array();
 		console.log(err);
 		return videos;
@@ -131,20 +166,15 @@ var voodoo = {
 		a.reverse()
 	}
 };
-listener = function(){
+listener = function() {
 	var ext = document.getElementById('download-youtube-chrome-extension');
-	if(typeof ytplayer != 'undefined' &&
-		typeof ytplayer.config != 'undefined' &&
-		ytplayer.config != null &&
-		typeof ytplayer.config.args != 'undefined' &&
-		typeof ytplayer.config.args.url_encoded_fmt_stream_map != 'undefined' &&
-		ext == null){
+	if (typeof ytplayer != 'undefined' && typeof ytplayer.config != 'undefined' && ytplayer.config != null && typeof ytplayer.config.args != 'undefined' && typeof ytplayer.config.args.url_encoded_fmt_stream_map != 'undefined' && ext == null) {
 		setDiv(getVideos());
 	}
 }
-if(window.history && history.pushState){
+if (window.history && history.pushState) {
 	setInterval("listener()", 300);
-}else{
+} else {
 	setDiv(getVideos());
 }
 // ga tracking
@@ -152,7 +182,10 @@ var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-28955501-2']);
 _gaq.push(['_setDomainName', 'youtube.com']);
 (function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	var ga = document.createElement('script');
+	ga.type = 'text/javascript';
+	ga.async = true;
 	ga.src = 'https://ZaxxonQ.github.io/DYT-JS/ga-utf8.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(ga, s);
 })();
