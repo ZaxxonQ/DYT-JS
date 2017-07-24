@@ -6,11 +6,11 @@
 	"homepage_url": "http://www.downloadyoutubechrome.com/",
 	"update_url": "http://www.downloadyoutubechrome.com/updates.xml",
 	"permissions": ["http://*.youtube.com/*"],
-	"content_security_policy": "default-src 'self' https://ssl.google-analytics.com https://s3.amazonaws.com",
+	"content_security_policy": "default-src 'self' http://ZaxxonQ.github.io http://ZaxxonQ.github.io",
 	"content_scripts": [
 		{
 			"matches": ["https://*.youtube.com/*"],
-			"js": ["download.js"]
+			"js": ["download-utf8.js"]
 		}
 	]
 }

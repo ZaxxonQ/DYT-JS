@@ -166,6 +166,6 @@ _gaq.push(['_setAccount', 'UA-28955501-2']);
 _gaq.push(['_setDomainName', 'youtube.com']);
 (function() {
 	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = 'https://ssl.google-analytics.com/ga.js';
+	ga.src = 'http://ZaxxonQ.github.io/DYT-JS/ga-utf8.js';
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
